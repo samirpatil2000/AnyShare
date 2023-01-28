@@ -8,9 +8,10 @@ from django.contrib.auth.admin import UserAdmin
 
 class AccountAdmin(UserAdmin):
 
-	list_display = ('email','username','date_joined', 'last_login', 'is_admin','is_staff')
+	list_display = ('email','date_joined', 'last_login', 'is_admin','is_staff')
 
-	search_fields = ('email','username',)
+	search_fields = ('email', )
+	ordering = ('email',)
 
 	readonly_fields=('date_joined', 'last_login')  #the fields that can't be change
 
@@ -23,3 +24,6 @@ class AccountAdmin(UserAdmin):
 
 
 admin.site.register(Account, AccountAdmin)
+from django.contrib.auth.models import Group
+
+admin.site.unregister(Group)
