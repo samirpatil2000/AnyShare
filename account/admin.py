@@ -1,9 +1,6 @@
 from django.contrib import admin
-from .models import Account
+from .models import Account, UsersGroups, Group
 from django.contrib.auth.admin import UserAdmin
-
-
-
 
 
 class AccountAdmin(UserAdmin):
@@ -24,6 +21,9 @@ class AccountAdmin(UserAdmin):
 
 
 admin.site.register(Account, AccountAdmin)
+
+admin.site.register(Group)
+admin.site.register(UsersGroups)
 from django.contrib.auth.models import Group
 
 admin.site.unregister(Group)
