@@ -7,4 +7,4 @@ class UsersGroups(models.Model):
     group = models.ForeignKey("account.Group", on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.user) + " - " + self.group
+        return str(self.user) + " - " + self.group.name
