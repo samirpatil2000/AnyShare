@@ -1,5 +1,7 @@
 from django.db import models
 
+from post.models import Comment
+
 
 class Post(models.Model):
 
@@ -13,3 +15,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def comments(self):
+        return Comment.objects.filter(post_id=self.id)
