@@ -2,12 +2,22 @@ from django.urls import path
 from django import views
 from . import views
 from django.contrib.auth import views as auth_views
+from rest_framework_simplejwt import views as jwt_views
+from account.api_views import RegistrationAPIView, LoginAPIView
 
 urlpatterns = [
+
+    path('token/refresh/',
+         jwt_views.TokenRefreshView.as_view(),
+         name='token_refresh'),
+    path('register/', RegistrationAPIView.as_view()),
+    path('login/', LoginAPIView.as_view()),
+
+
     path('',views.index,name='home'),
-    path('register/',views.registration_view,name='register'),
-    path('logout/',views.logout_view,name='logout'),
-    path('login/',views.login_view,name='login'),
+    # path('register/',views.registration_view,name='register'),
+    # path('logout/',views.logout_view,name='logout'),
+    # path('login/',views.login_view,name='login'),
 
     path('password-reset/',
          auth_views.PasswordResetView.as_view(template_name='account/password_reset.html'),

@@ -44,6 +44,9 @@ INSTALLED_APPS = [
 
     # third party
     'crispy_forms',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'corsheaders'
 ]
 
 
