@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from post.models import Post, Comment
+from post.models import Post, Comment, LatLong
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -44,3 +44,10 @@ class PostSerializer(serializers.ModelSerializer):
             raise "Not Authorized"
         return super().update(instance, validated_data)
 
+
+
+class LatLongSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = LatLong
+        fields = ["latitude", "longitude", "created_at"]
